@@ -1,9 +1,9 @@
 
- function show() {
+ function show_notification_box() {
    var time = /(..)(:..)/.exec(new Date());     
    var hour = time[1] % 12 || 12;               
    var period = time[1] < 12 ? 'a.m.' : 'p.m.'; 
-   new Notification(hour + time[2] + ' ' + period, {
+   new Notification_box(hour + time[2] + ' ' + period, {
     icon: 'have-a-break.png',
     body: "Take a break have a kitkat"
   });
@@ -19,7 +19,7 @@ if (!localStorage.isInitialized) {
 
 if (window.Notification_box) {
   
-  if (JSON.parse(localStorage.isActivated)) { show(); }
+  if (JSON.parse(localStorage.isActivated)) { show_notification_box(); }
 
   var interval = 0; 
 
@@ -30,7 +30,7 @@ if (window.Notification_box) {
       JSON.parse(localStorage.isActivated) &&
         localStorage.frequency <= interval
     ) {
-      show();
+      show_notification_box();
       interval = 0;
     }
   }, 60000);
